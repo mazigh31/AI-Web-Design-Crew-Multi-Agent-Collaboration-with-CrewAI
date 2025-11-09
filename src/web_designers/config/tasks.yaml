@@ -1,0 +1,56 @@
+design_task:
+  description: >
+    Take the high-level requirements for building a professional tutoring website and prepare a detailed technical design for the engineering team.
+    The design should describe the architecture of a Flask web application, including:
+      - the structure of the backend (routes, templates, static files, forms, optional database models);
+      - the main application file {module_name}.py;
+      - the interaction between backend and frontend components;
+      - and the overall flow of the web pages (home, about, contact, booking, etc.).
+    IMPORTANT: Only output the design in markdown format, detailing the Flask routes, templates, and their responsibilities.
+  expected_output: >
+    A detailed Flask web application design document, describing the structure, routes, and logic for each page and component.
+  agent: engineering_lead
+  output_file: output/{module_name}_design.md
+
+code_task:
+  description: >
+    Implement the Flask backend according to the detailed design provided by the engineering lead.
+    Create the main application file {module_name}.py, including all routes, form handling, template rendering, and optional database models needed to meet the requirements.
+    Here are the requirements: {requirements}
+  expected_output: >
+    A complete Flask backend application that follows the design and fulfills the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to {module_name}.py and executed.
+  agent: backend_engineer
+  context:
+    - design_task
+  output_file: output/{module_name}
+
+frontend_task:
+  description: >
+    Build the frontend for the Flask web application implemented in {module_name}.
+    Create the HTML templates in the 'templates' directory and organize CSS and JS files under 'static/css' and 'static/js'.
+    Ensure the frontend demonstrates all pages and features described in the requirements, with a professional and responsive design.
+    Here are the requirements: {requirements}
+  expected_output: >
+    The frontend files (HTML, CSS, JS) that integrate with the Flask backend.
+    IMPORTANT: Output ONLY the raw code/files without any markdown formatting or code block delimiters.
+    The files should be ready to run in the Flask project directory alongside {module_name}.py.
+  agent: frontend_engineer
+  context:
+    - code_task
+  output_file: output/frontend/
+
+test_task:
+  description: >
+    Write unit and integration tests for the Flask backend module {module_name}.
+    Create a test_{module_name}.py file in the same directory as {module_name}.py.
+    The tests should verify route accessibility, template rendering, form handling, and any expected responses described in the requirements.
+  expected_output: >
+    A test_{module_name}.py module that tests the Flask backend application {module_name}.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed with pytest.
+  agent: test_engineer
+  context:
+    - code_task
+  output_file: output/test_{module_name}.py

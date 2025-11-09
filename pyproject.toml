@@ -1,0 +1,27 @@
+[project]
+name = "web_designers"
+version = "0.1.0"
+description = "web_designers using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.4.0",
+    "flask>=3.0.0",
+    "flask-wtf>=1.2.0",
+    "wtforms>=3.1.0"
+]
+
+[project.scripts]
+web_designers = "web_designers.main:run"
+run_crew = "web_designers.main:run"
+train = "web_designers.main:train"
+replay = "web_designers.main:replay"
+test = "web_designers.main:test"
+run_with_trigger = "web_designers.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
