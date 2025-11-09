@@ -23,7 +23,6 @@ The goal is to explore **multi-agent coordination**, **autonomous task division*
 ## ⚙️ Tech Stack
 
 - **Framework:** [CrewAI](https://github.com/joaomdmoura/crewai)
-- **Runtime:** [UV](https://github.com/astral-sh/uv)
 - **Language:** Python 3.12+
 - **Models Used:** `gpt-4o` and `gpt-4o-mini`
 - **Web Framework:** Flask
